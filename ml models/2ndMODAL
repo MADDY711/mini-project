@@ -1,0 +1,20 @@
+import numpy as np
+from sklearn.linear_model import PoissonRegressor
+
+# Sample data (replace with your data)
+# X: Image features extracted from your crowd images (e.g., average intensity, local entropy)
+# y: Actual crowd counts for the corresponding images
+X = np.array(...)  # 2D array of image features
+y = np.array(...)  # 1D array of crowd counts (integers)
+
+# Poisson regression model
+model = PoissonRegressor()
+model.fit(X, y)
+
+# Prediction for a new image with features (new_x)
+new_x = np.array(...)  # Features extracted from a new image
+predicted_count = np.exp(model.predict(new_x)[0])  # Poisson regression predicts log(count)
+
+# Round the predicted count to the nearest integer (assuming integer crowd size)
+predicted_count = int(round(predicted_count))
+print("Predicted crowd count:", predicted_count)
