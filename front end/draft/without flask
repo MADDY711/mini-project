@@ -1,0 +1,68 @@
+// index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crowd Prediction</title>
+  <link href="(link unavailable)" rel="stylesheet">
+  <script src="(link unavailable)"></script>
+  <script src="(link unavailable)"></script>
+</head>
+<body>
+  <div id="map" style="height: 500px; width: 800px"></div>
+  <div id="chart" style="height: 300px; width: 800px"></div>
+  <script>
+    const map = L.map('map').setView([52.5200, 13.4050], 13);
+    L.tileLayer('https://{s}.(link unavailable)', {
+      attribution: '&copy; <a href="(link unavailable)">OpenStreetMap</a>',
+      subdomains: ['a', 'b', 'c']
+    }).addTo(map);
+    const marker = L.marker([52.5200, 13.4050]).addTo(map);
+
+    const chart = document.getElementById('chart');
+    const ctx = chart.getContext('2d');
+    const data = [];
+    fetch('/crowd-data')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(item => {
+          data.push({ x: item.name, y: item.value });
+        });
+        const chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.map(item => item.x),
+            datasets: [{
+              label: 'Crowd density',
+              data: data.map(item => item.y),
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      });
+  </script>
+</body>
+</html>
+
+
+
+// crowd-data.js
+const data = [
+  { name: 'Hour 1', value: 100 },
+  { name: 'Hour 2', value: 150 },
+  { name: 'Hour 3', value: 200 }
+];
+
+fetch('/crowd-data')
+  .then(response => response.json())
+  .then(data => console.log(data));
