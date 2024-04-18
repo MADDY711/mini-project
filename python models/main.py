@@ -24,6 +24,7 @@ predictions = lr_model.predict(X_test)
 # Calculating Mean Squared Error to evaluate the model performance
 mse = mean_squared_error(y_test, predictions)
 print('Mean Squared Error:', mse)
+print(predictions)
 
 #added changes
 '''# Prepare the new features for prediction
