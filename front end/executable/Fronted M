@@ -39,3 +39,77 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+CSS
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff; /* Text color on top of background image */
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+#tripDetails {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    color: #333; /* Text color on top of background */
+}
+
+@media (max-width: 768px) {
+    #tripDetails {
+        margin-top: 10px;
+    }
+}
+
+
+
+JAVASCRIPT 
+
+
+
+document.getElementById('tripForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const destination = document.getElementById('destination').value;
+    const date = document.getElementById('date').value;
+
+    const tripDetails = `
+        <h2>Your Trip Details</h2>
+        <p><strong>Destination:</strong> ${destination}</p>
+        <p><strong>Date:</strong> ${date}</p>
+    `;
+
+    document.getElementById('tripDetails').innerHTML = tripDetails;
+});
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+    });
+    
+    // Add autocomplete functionality to the destination input
+    var input = document.getElementById('destination');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    
+    // Bias the autocomplete results towards current map's viewport
+    autocomplete.bindTo('bounds', map);}
