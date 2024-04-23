@@ -1,0 +1,79 @@
+body {
+    
+        
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('https://mrwallpaper.com/images/high/aesthetic-ocean-with-beach-chairs-y91a6rlzi4xi69ct.webp');
+    background-size: cover;
+    background-position: 0% 100%;
+    transition: background-position 0.5s ease-in-out;
+    font-family: Arial, sans-serif;;
+
+
+}
+
+.container {
+max-width: 500px;
+margin: 50px auto 50px 20px; /* adjust the left margin value */
+padding: 20px;
+background-color: #ffffff;
+border-radius: 10px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+.title {
+color: #5C6AC4;
+font-weight: bold;
+font-size: 24px;
+margin-bottom: 20px;
+}
+
+.label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+color: #333333;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+input[type="date"], input[type="time"], input[type="text"] {
+width: 100%;
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #cccccc;
+border-radius: 5px;
+}
+
+.submit-btn {
+background-color: #4CAF50;
+color: #ffffff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.result {
+font-weight: bold;
+font-size: 18px;
+margin-top: 20px;
+color: #666666;
+}
+
+body.background-change {
+background-position: 100% 100%;
+}
+
+.form-group:hover {
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+background-color: #3e8e41;
+}
