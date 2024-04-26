@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Program Output</title>
+    <!-- Load Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Python Program Output</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="monthInput">Enter month no.:</label>
+                <input type="number" class="form-control" id="monthInput" name="month" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Output will be displayed here -->
+        <div class="mt-4">
+            {% if output %}
+            <h2>Mean Squared Error: {{ mse }}</h2>
+            <h3>Predictions:</h3>
+            <pre>{{ predictions }}</pre>
+            <p>Note: the last value in the array is the value of the target month.</p>
+            <div>
+                
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
