@@ -34,22 +34,25 @@ def index():
         y = df['total']
 
         # Splitting the data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=n/100, random_state=n)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.03, random_state=n)
 
         # Making predictions
-        predictions = lr_model.predict(X_test)
+        predictions = lr_model.predict(X_test) 
 
         # Calculating Mean Squared Error
         mse = mean_squared_error(y_test, predictions)
+        a=list(range(1,n+2))
 
         # Plotting
         plt.figure(figsize=(8, 6))
-        plt.plot([n], [predictions[-1]], marker='o', color='b', linestyle='-', linewidth=1, markersize=6)
+        plt.plot(a[-6:-1], predictions[-6:-1], marker='o', color='b', linestyle='-', linewidth=1, markersize=6)
         plt.title("Crowd Comparison")
         plt.xlabel("Month")
         plt.ylabel("No. of Tourists")
         plt.grid(True)
-       # plt.savefig('static/plot.png')  # Save plot as a static file
+        graph_path = 'static/graph.png'  # Save the graph as a PNG file in the static folder
+        plt.savefig(graph_path)
+        # plt.savefig('static/plot.png')  # Save plot as a static file
 
         output = True
 
